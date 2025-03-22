@@ -1,6 +1,5 @@
 const terminalContent = document.getElementById('terminal-content');
 
-// Commands without the '$' symbol in text
 const commands = [
     {
         text: 'cd masham-portfolio',
@@ -35,7 +34,6 @@ function typeCommand() {
         charIndex++;
         setTimeout(typeCommand, 100);
     } else {
-        // Replace with color-coded HTML once typing is complete
         currentLine.innerHTML = `<span class="dollar-sign">$</span> ` + commands[currentCommand].html;
 
         if (currentCommand < commands.length - 1) {
@@ -43,7 +41,6 @@ function typeCommand() {
             charIndex = 0;
             tempLine = '';
 
-            // Immediately add the next line with static '$' and cursor
             currentLine = document.createElement('p');
             currentLine.innerHTML = `<span class="dollar-sign">$</span> `;
             cursorSpan = document.createElement('span');
@@ -52,15 +49,24 @@ function typeCommand() {
             currentLine.appendChild(cursorSpan);
             terminalContent.appendChild(currentLine);
 
+            adjustTerminalHeight();
+
             setTimeout(typeCommand, 500);
         } else {
-            // Remove the cursor and show output links after typing is done
             setTimeout(() => {
                 cursorSpan.remove();
                 terminalContent.insertAdjacentHTML('beforeend', outputLinks);
+
+                adjustTerminalHeight();
             }, 500);
         }
     }
+}
+
+function adjustTerminalHeight() {
+    const terminalWindow = document.querySelector('.terminal-window');
+    const contentHeight = terminalContent.scrollHeight; // Get the total height of the content
+    terminalWindow.style.height = `${contentHeight + 40}px`; // Add some padding for smoothness
 }
 
 window.onload = () => {
@@ -74,5 +80,22 @@ window.onload = () => {
     currentLine.appendChild(cursorSpan);
     terminalContent.appendChild(currentLine);
 
+    adjustTerminalHeight();
+
     typeCommand();
 };
+
+const syncPointer = ({ x, y }) => {
+    document.documentElement.style.setProperty('--x', x.toFixed(2));
+    document.documentElement.style.setProperty(
+    '--xp',
+    (x / window.innerWidth).toFixed(2)
+    );
+    document.documentElement.style.setProperty('--y', y.toFixed(2));
+    document.documentElement.style.setProperty(
+    '--yp',
+    (y / window.innerHeight).toFixed(2)
+    );
+};
+
+document.body.addEventListener('pointermove', syncPointer);

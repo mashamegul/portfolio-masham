@@ -5,9 +5,8 @@
 }
 
 body {
-    background: url('images/background-web.svg') no-repeat center center fixed;
     background-size: cover;
-    background-color: #000000e7;
+    background-color: #10141a;
     font-family: 'JetBrains Mono', monospace;
 }
 
@@ -24,17 +23,84 @@ body {
 }
 
 .terminal-window {
-    background-color: #1e1e1e;
+    background-color: #192029;
     width: 800px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0px 0px 25px #ffffff;
     position: relative;
+    box-shadow: rgba(14, 63, 126, 0.04) 0px 0px 0px 1px, rgba(42, 51, 69, 0.04) 0px 1px 1px -0.5px, rgba(42, 51, 70, 0.04) 0px 3px 3px -1.5px, rgba(42, 51, 70, 0.04) 0px 6px 6px -3px, rgba(14, 63, 126, 0.04) 0px 12px 12px -6px, rgba(14, 63, 126, 0.04) 0px 24px 24px -12px;
+    transition: height 0.3s ease;
+}
+
+.terminal-window:first-of-type {
+	--base: 250;
+	--spread: 320;
+	--outer: 1;
+}
+
+/* Glow effect for terminal */
+.terminal-window {
+    --border-size: calc(var(--border, 2) * 1px);
+    --spotlight-size: calc(var(--size, 150) * 1px);
+    --hue: calc(var(--base) + (var(--xp, 0) * var(--spread, 0)));
+    background-image: radial-gradient(
+        var(--spotlight-size) var(--spotlight-size) at
+        calc(var(--x, 0) * 1px)
+        calc(var(--y, 0) * 1px),
+        hsl(var(--hue, 210) calc(var(--saturation, 100) * 1%) calc(var(--lightness, 70) * 1%) / var(--bg-spot-opacity, 0.1)), transparent
+    );
+    background-color: var(hsl(240, 100%, 70% / 0.2));
+    background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
+    background-position: 50% 50%;
+    background-attachment: fixed;
+    border: var(--border-size) solid var(--backup-border);
+    position: relative;
+    touch-action: none;
+    border-radius: 10px;
+}
+
+.terminal-window::before,
+.terminal-window::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: calc(var(--border-size) * -1);
+    border: var(--border-size) solid transparent;
+    border-radius: 10px;
+    background-attachment: fixed;
+    background-size: calc(100% + (2 * var(--border-size))) calc(100% + (2 * var(--border-size)));
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    mask:
+        linear-gradient(transparent, transparent),
+        linear-gradient(white, white);
+    mask-clip: padding-box, border-box;
+    mask-composite: intersect;
+}
+
+.terminal-window::before {
+    background-image: radial-gradient(
+        calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at
+        calc(var(--x, 0) * 1px)
+        calc(var(--y, 0) * 1px),
+        hsl(var(--hue, 210) calc(var(--saturation, 50) * 1%) calc(var(--lightness, 50) * 1%) / var(--border-spot-opacity, 1)), transparent 100%
+    );
+    filter: brightness(2);
+}
+
+.terminal-window::after {
+    background-image: radial-gradient(
+        calc(var(--spotlight-size) * 0.5) calc(var(--spotlight-size) * 0.5) at
+        calc(var(--x, 0) * 1px)
+        calc(var(--y, 0) * 1px),
+        hsl(60 100% 100% / var(--border-light-opacity, 1)), transparent 100%
+    );
 }
 
 .terminal-content {
     color: #D4D4D4;
     font-size: 1.2rem;
+    transition: font-size 0.3s ease, padding 0.3s ease;
 }
 
 .dollar-sign {
@@ -58,6 +124,7 @@ body {
     color: #8abfea;
     text-decoration: none;
     margin-right: 20px;
+    transition: font-size 0.3s ease, padding 0.3s ease, margin 0.3s ease;
 }
 
 .terminal-link:hover {
