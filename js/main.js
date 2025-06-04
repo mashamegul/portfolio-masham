@@ -411,6 +411,7 @@ const horizontalGalleryHandler = (() => {
         galleryElement.innerHTML += galleryContent;
 
         const animateScroll = () => {
+            // Only auto-scroll if not paused AND not user interacting
             if (!isPaused && !userInteracting) { //
                 currentScroll += scrollSpeed;
                 if (currentScroll >= galleryElement.scrollWidth / 2) {
@@ -427,6 +428,7 @@ const horizontalGalleryHandler = (() => {
             }
         };
 
+        // Pause on hover for desktop (existing)
         if (pauseOnHover) {
             galleryElement.addEventListener('mouseenter', () => {
                 isPaused = true;
@@ -436,19 +438,24 @@ const horizontalGalleryHandler = (() => {
             });
         }
 
+        // New: Event listeners for touch interaction to pause auto-scroll
         galleryElement.addEventListener('touchstart', () => {
             userInteracting = true; // User started touching
-            isPaused = true;
+            isPaused = true; // Also pause on touch to be safe
         });
 
         galleryElement.addEventListener('touchend', () => {
+            // Give a small delay before resuming auto-scroll to allow for natural lift-off
             setTimeout(() => {
-                userInteracting = false;
+                userInteracting = false; // User stopped touching
                 isPaused = false;
-            }, 300);
+            }, 300); // Adjust delay as needed
         });
 
+        // Add a 'scroll' event listener to the gallery itself to detect manual scrolling
         galleryElement.addEventListener('scroll', () => {
+            // If the user manually scrolls, reset the auto-scroll position to match
+            // This helps prevent jumps if the user scrolls and then auto-scroll resumes
             currentScroll = galleryElement.scrollLeft;
         });
 
