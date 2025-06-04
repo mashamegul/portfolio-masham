@@ -1,6 +1,6 @@
 # Masham Siddiqui – Personal Portfolio Website
 
-Website:
+Website: https://masham-portfolio-2tnl9.ondigitalocean.app/
 
 Hi! This is the source code and related files for my DECO1400 portfolio project. The assignment required us to create a website of our using using vanilla HTML, CSS, and JavaScript, without any frameworks or libraries. I decided to create a personal portfolio website to showcase my work and skills.
 
