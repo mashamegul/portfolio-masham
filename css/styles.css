@@ -560,6 +560,7 @@ em {
     height: 36px;
     object-fit: contain;
     margin-bottom: 0.4rem;
+    filter: drop-shadow(0 0.001px 10px rgba(255, 255, 255, 0.417));
 }
 
 .tech-item span {
@@ -745,9 +746,11 @@ em {
     padding-bottom: 1rem;
     box-sizing: border-box;
     z-index: 0;
-    position: bottom;
+    position: bottom fixed;
     left: 0;
     bottom: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .contact-footer {
@@ -756,6 +759,8 @@ em {
     padding-top: 10px;
     font-size: 0.85rem;
     color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
 }
 
 /* Projects Grid */
@@ -1238,12 +1243,16 @@ em {
         height: 90px;
         padding: 0.5rem;
         flex-shrink: 0;
+        filter: drop-shadow(0 0.001px 10px rgba(255, 255, 255, 0.417));
     }
+
     .tech-item img {
         width: 35px;
         height: 35px;
         margin-bottom: 0.2rem;
+        filter: drop-shadow(0 0.001px 10px rgba(255, 255, 255, 0.417));
     }
+
     .tech-item span {
         font-size: 0.7rem;
     }
