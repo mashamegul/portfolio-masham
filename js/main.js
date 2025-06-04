@@ -126,6 +126,7 @@ const navigationHandler = (() => {
 
                 // Check if the section's top is past the activation offset
                 // OR if a significant portion of it is visible
+                const activationOffset = topNavbarHeight + 50; // Adjust as needed
 
                 if (rect.top <= activationOffset && rect.bottom > activationOffset) {
                     // This section is "intersecting" the activation line
@@ -412,7 +413,7 @@ const horizontalGalleryHandler = (() => {
 
         const animateScroll = () => {
             // Only auto-scroll if not paused AND not user interacting
-            if (!isPaused && !userInteracting) { //
+            if (!isPaused && !userInteracting) {
                 currentScroll += scrollSpeed;
                 if (currentScroll >= galleryElement.scrollWidth / 2) {
                     currentScroll = 0;
@@ -430,12 +431,18 @@ const horizontalGalleryHandler = (() => {
 
         // Pause on hover for desktop (existing)
         if (pauseOnHover) {
-            galleryElement.addEventListener('mouseenter', () => {
-                isPaused = true;
+            // --- MODIFICATION START ---
+            // Find all individual gallery items within this gallery and attach listeners
+            const galleryItems = galleryElement.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    isPaused = true;
+                });
+                item.addEventListener('mouseleave', () => {
+                    isPaused = false;
+                });
             });
-            galleryElement.addEventListener('mouseleave', () => {
-                isPaused = false;
-            });
+            // --- MODIFICATION END ---
         }
 
         // New: Event listeners for touch interaction to pause auto-scroll
