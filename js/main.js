@@ -364,31 +364,46 @@ const projectDetailModalHandler = (() => {
     };
 })();
 
-// Module for Intersection Observer animations
+// Module for Intersection Observer animations and lazy loading
 const animationObserver = (() => {
     const observerOptions = {
-        threshold: 0.5,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.1, // Trigger when 10% of the element is visible
+        rootMargin: '0px 0px -50px 0px' // Load images when they are 50px from the bottom of the viewport
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Apply animation styles
                 entry.target.style.opacity = '1';
                 if (entry.target.classList.contains('slide-in-left') || entry.target.classList.contains('slide-in-right')) {
                     entry.target.style.transform = 'translateX(0)';
                 }
+
+                // Handle lazy loading for images within the intersecting element
+                const lazyImages = entry.target.querySelectorAll('img[data-src]');
+                lazyImages.forEach(img => {
+                    img.src = img.dataset.src; // Set the actual source from data-src
+                    img.removeAttribute('data-src'); // Remove data-src to prevent re-loading
+                });
+
+                // Stop observing this element after it has been animated and images loaded
                 observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
 
     const init = () => {
+        // Observe elements for animation
         document.querySelectorAll('.timeline-item').forEach(item => {
             observer.observe(item);
         });
         document.querySelectorAll('.gallery-container .gallery-item').forEach(item => {
             observer.observe(item);
+        });
+        // Also observe any other images that should be lazy loaded, e.g., if you add data-src to them directly
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            observer.observe(img);
         });
     };
 
@@ -431,7 +446,6 @@ const horizontalGalleryHandler = (() => {
 
         // Pause on hover for desktop (existing)
         if (pauseOnHover) {
-            // --- MODIFICATION START ---
             // Find all individual gallery items within this gallery and attach listeners
             const galleryItems = galleryElement.querySelectorAll('.gallery-item');
             galleryItems.forEach(item => {
@@ -442,7 +456,6 @@ const horizontalGalleryHandler = (() => {
                     isPaused = false;
                 });
             });
-            // --- MODIFICATION END ---
         }
 
         // New: Event listeners for touch interaction to pause auto-scroll
