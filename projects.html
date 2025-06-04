@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Masham Siddiqui | Projects</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body id="projects-page">
+    <header class="top-navbar">
+        <a href="index.html" class="site-logo">ma.sh</a>
+        <nav>
+            <a href="experience.html">Experience</a>
+            <a href="projects.html">Projects</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="creative.html">Creative</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <div class="layout-container">
+        <aside class="sidebar">
+            <div class="sidebar-content">
+                <div class="profile-section">
+                    <div class="profile-image-wrapper">
+                        <img src="images/me.jpeg" alt="Masham Siddiqui" class="profile-photo">
+                        <div class="profile-status"></div>
+                    </div>
+                    <h1 class="profile-name">Masham Siddiqui</h1>
+                    <p class="profile-title">Final Year B.CompSci</p>
+                    <p class="profile-location">Brisbane, Australia</p>
+                </div>
+
+                <nav class="nav-menu">
+                </nav>
+
+                <div class="social-links">
+                    <a href="https://github.com/mashamegul" class="social-link" target="_blank">
+                        <img src="images/icons/github-icon.png" alt="GitHub">
+                    </a>
+                    <a href="https://linkedin.com/mashamegul" class="social-link" target="_blank">
+                        <img src="images/icons/linkedin-icon.png" alt="GitHub">
+                    </a>
+                    <a href="mailto:therealmasham@gmail.com" class="social-link">
+                        <img src="images/icons/email-icon.png" alt="Email">
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section id="projects-section" class="section">
+                <div class="section-header">
+                    <h2 class="section-heading">Featured Projects</h2>
+                    <div class="terminal-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card" id="daily-assignment-system"
+                        data-full-description="Led a 12-week personal project optimising task management inefficiencies in Amazon warehouses, reducing 140,000+ annual lost hours across ~870 stores by developing bulk unassignment APIs using Java, AWS Lambda, DynamoDB, and SQS. Enhanced frontend features using React, TypeScript, and AWS, ensuring seamless integration with backend systems and contributing to deployment readiness through Amazon's CI/CD pipelines. Strengthened system reliability by implementing Mockito for automated testing and integrating Amazon CloudWatch for enhanced monitoring and debugging."
+                        data-images="images/projects/amazon1.png">
+                        <div class="project-icon">
+                            <img src="images/icons/amazon.png" alt="Amazon Icon" class="project-logo-icon">
+                        </div>
+                        <h3>
+                        Daily Assignment System
+                        <span class="project-company">Amazon</span>
+                        </h3>
+                        <p>Led a 12-week personal project optimising task management inefficiencies in Amazon warehouses, reducing 140,000+ annual lost hours across ~870 stores.</p>
+                        <div class="project-tech">
+                            <span class="tech-pill">Java</span>
+                            <span class="tech-pill">AWS Lambda</span>
+                            <span class="tech-pill">DevOps</span>
+                            <span class="tech-pill">DynamoDB</span>
+                            <span class="tech-pill">SQS</span>
+                            <span class="tech-pill">React</span>
+                            <span class="tech-pill">TypeScript</span>
+                            <span class="tech-pill">Mockito</span>
+                            <span class="tech-pill">CloudWatch</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" id="atlassian-project"
+                        data-full-description="Developed and implemented the 'Add Web Link' feature for the Jira Android app using Kotlin, integrating with REST APIs, handling errors, and building custom Jetpack Compose UI components. Implemented feature flags with Launch Darkly and integrated the 'Add Web Link' button into the overflow menu, enhancing user functionality and ensuring controlled rollouts. Collaborated with the Jira Mobile team using Bitbucket for code reviews and Jira for task management, and created a prototype demo to enhance skills in Android development. Also developed a Restaurant Review App during the internship to learn Kotlin before diving into the Jira codebase, which allows users to leave and read reviews with advanced functionality like dark mode and multi-language support."
+                        data-images="images/projects/atlassian1.png,images/projects/restaurant_review_demo.png">
+                        <div class="project-icon">
+                            <img src="images/icons/atlassian.png" alt="Jira Icon" class="project-logo-icon">
+                        </div>
+                        <h3>Jira Android Feature <span class="project-company">Atlassian</span></h3>
+                        <p>Developed and implemented the 'Add Web Link' feature for the Jira Android app and a Restaurant Review App using Kotlin and Jetpack Compose UI components.</p>
+                        <div class="project-tech">
+                            <span class="tech-pill">Kotlin</span>
+                            <span class="tech-pill">Android</span>
+                            <span class="tech-pill">Jetpack Compose</span>
+                            <span class="tech-pill">REST APIs</span>
+                            <span class="tech-pill">Launch Darkly</span>
+                            <span class="tech-pill">Bitbucket</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" id="greenstreets"
+                        data-full-description="Led full-stack development of an image recognition system using YOLOV3 to detect rubbish on council vehicles and upload data to a heatmap, incentivising citizens to engage in local waste clean-up efforts. Collaborated with UQ and DNUI students, contributing to both backend and frontend development. Built backend systems with Python and AWS for data processing and integration. Supported frontend development using HTML, CSS, and React to enable intuitive data visualisation and enhance user engagement. Conducted machine learning research to enhance model accuracy, contributing to the project winning the Best International Team Award (1st Place Overall) for innovation and excellence."
+                        data-github-link="https://gitee.com/DYX021210/green-streets"
+                        data-images="images/projects/greenstreets1.png,images/projects/greenstreets2.png">
+                        <div class="project-icon">
+                            <img src="images/icons/greenstreets.png" alt="GreenStreets Icon" class="project-logo-icon">
+                        </div>
+                        <h3>GreenStreets <span class="project-company">UQ x DNUI</span></h3>
+                        <h3><span class="project-company">1st Place</span></h3>
+                        <p>Led full-stack development of an image recognition system using YOLOV3 to detect rubbish on council vehicles and upload data to a heatmap. Won Best International Team Award.</p>
+                        <div class="project-tech">
+                            <span class="tech-pill">Python</span>
+                            <span class="tech-pill">YOLOv3</span>
+                            <span class="tech-pill">ML</span>
+                            <span class="tech-pill">AWS</span>
+                            <span class="tech-pill">React</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" id="imc-prosperity"
+                        data-full-description="Developed an algorithmic trading bot for the IMC Prosperity 3 competition, achieving #1 QLD, #9 AUS, and #89 Globally amongst over 12,000 teams. The bot leveraged advanced algorithms for market analysis and automated trading strategies to maximize returns. I worked on the algorithmic trading side, developing Python-based strategies for market making, statistical arbitrage, and volatility modelling. I deepened my understanding of market microstructure, economic modelling, risk management, and strategy optimisation under live conditions through team collaboration."
+                        data-github-link="https://github.com/TheNoZER0/imc-prosperity3"
+                        data-images="images/projects/imc1.png,images/projects/imc2.png">
+                        <div class="project-icon">
+                            <img src="images/icons/imc.png" alt="IMC Icon" class="project-logo-icon">
+                        </div>                        
+                        <h3>Algorithmic Trading Competition <span class="project-company">(IMC Prosperity 3)</span></h3>
+                        <p>Developed an algorithmic trading bot for the IMC Prosperity 3 competition, achieving #1 QLD, #9 AUS, and #89 Globally.</p>
+                        <div class="project-tech">
+                            <span class="tech-pill">Python</span>
+                            <span class="tech-pill">Algorithms</span>
+                            <span class="tech-pill">Trading</span>
+                            <span class="tech-pill">Data Analysis</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" id="solunar"
+                        data-full-description="Selected as a Top 5 finalist in the UQ Ventures Industry Challenge amongst over 100 teams and over 500 students for designing an autonomous beach-cleaning robot and drone system tackling coastal pollution. Designed a conceptual system combining aerial rubbish detection with an accessible, sorting-enabled mobile bin. Led research and prototyping efforts, including environmental problem validation and system architecture mockups. Pitched the solution to industry mentors and judges, standing out among 100+ interdisciplinary teams. Solunar is an autonomous beach cleaning solution combining robotics, drones, and AI. The drone uses computer vision to identify litter on the beach, while the ground robot, guided by GPS and machine learning, collects the waste. Powered by solar energy, Solunar operates sustainably at night and serves as a mobile trash bin during the day. Its digital interface displays real-time environmental facts, encouraging community awareness. The system’s scalable design makes it adaptable for various beach sizes, and it plays a crucial role in preserving coastal environments, particularly in preparation for large events like the 2032 Olympics."
+                        data-images="images/projects/solunar1.png,images/projects/solunar2.png">
+                        <div class="project-icon">🤖</div>
+                        <h3>Solunar
+                            <span class="project-company">UQ Ventures</span>
+                        </h3>
+                        <p>Selected as a Top 5 finalist in the UQ Ventures Industry Challenge for designing an autonomous beach-cleaning robot and drone system.</p>
+                        <div class="project-tech">
+                            <span class="tech-pill">Robotics</span>
+                            <span class="tech-pill">Drone Tech</span>
+                            <span class="tech-pill">Environmental Tech</span>
+                            <span class="tech-pill">Innovation</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" id="deit-alzheimers"
+                        data-full-description="COMP3710 (Pattern Recognition and Analysis) | Alzheimer’s Disease Classification Using DeiT-small. I implemented a machine learning pipeline using DeiT-small to classify MRI scans as Alzheimer’s Disease (AD) or Normal Control (NC). The model achieved 81.42% validation accuracy through effective preprocessing, attention-based feature extraction, and early stopping to prevent overfitting."
+                        data-github-link="https://github.com/mashamegul/PatternAnalysis-2024/tree/topic-recognition/recognition/GFNet_Alzheimer_Classification_47443433">
+                        <div class="project-icon">
+                            <img src="images/icons/uq.png" alt="UQ Icon" class="project-logo-icon">
+                        </div>  
+                        <h3>DeiT Vision Transformer <span class="project-company">UQ</span></h3>
+                        <p>Implemented a machine learning pipeline using DeiT-small to classify MRI scans for Alzheimer’s Disease, achieving 81.42% validation accuracy.</p>
+                        <div class="project-tech">
+                            <span class="tech-pill">Machine Learning</span>
+                            <span class="tech-pill">Computer Vision</span>
+                            <span class="tech-pill">Deep Learning</span>
+                            <span class="tech-pill">Python</span>
+                        </div>
+                    </div>
+
+                    <div class="project-card" id="box-blitz"
+                        data-full-description="Box Blitz is an API designed specifically for the 2024 SIC 2.5 Day Hackathon (UQSIC x UQ Ventures x UQIES x EWB). Designed to seamlessly integrate with the systems of large retail companies offering click & collect services or deliveries, Box Blitz revolutionises the packaging process. Utilising advanced algorithms to analyse product details, it optimises packaging solutions, reducing unnecessary void fill and minimizing supply chain wastage. This initiative not only promotes cost savings and enhances employee efficiency but also plays a pivotal role in advancing the circular economy by ensuring packaging practices are sustainable. Box Blitz differs from its competitors through its internal packaging consideration and Deep Learning algorithms which allows the Box Blitz model to learn best-fit package suggestions with user validation. Through Box Blitz, retailers can achieve a balance between operational efficiency and environmental stewardship, paving the way for a more sustainable future in online shopping.">
+                        <div class="project-icon">📦</div>
+                        <h3>Box Blitz <span class="project-company">SIC Hackathon</span></h3>
+                        <p>Designed an API for optimising retail packaging solutions using advanced algorithms and Deep Learning, reducing waste and enhancing efficiency.</p>
+                        <div class="project-tech">
+                            <span class="tech-pill">AI</span>
+                            <span class="tech-pill">Deep Learning</span>
+                            <span class="tech-pill">API Development</span>
+                            <span class="tech-pill">Circular Economy</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="content-card note-card fade-in">
+                    <p class="intro-text">
+                        Seems like something is missing here? This is a work in progress of my very extensive project history.<br>
+                        If you want to know more, visit my <a href="https://linkedin.com/in/mashamsiddiqui" target="_blank" class="inline-link">LinkedIn profile</a>!
+                        More information will be added here soon.
+                    </p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="footer-background">
+        <div class="contact-footer">
+            <p>© 2025 Masham Siddiqui. All rights reserved.<br>Made with ❤️ using HTML, CSS, and JavaScript for DECO1400.</p>
+        </div>
+    </div>
+
+    <div id="projectDetailModal" class="modal">
+        <span class="close-button">&times;</span>
+        <div class="modal-content project-modal-content">
+            <h2 id="projectModalTitle"></h2>
+            <div id="projectModalImages" class="project-modal-images">
+                </div>
+            <p id="projectModalDescription"></p>
+            <div id="projectModalTech" class="project-tech">
+                </div>
+            <a id="projectModalGithubLink" href="#" target="_blank" class="github-button" style="display: none;">
+                <img src="images/icons/github-icon.png" alt="GitHub Icon"> View on GitHub
+            </a>
+        </div>
+    </div>
+
+    <div id="imageModal" class="modal">
+        <span class="close-button">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption" class="modal-caption"></div>
+    </div>
+
+    <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
