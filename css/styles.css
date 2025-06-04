@@ -937,6 +937,7 @@ em {
     font-weight: bold;
     transition: 0.3s;
     cursor: pointer;
+    z-index: 210;
 }
 
 .close-button:hover,
