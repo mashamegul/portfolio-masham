@@ -404,14 +404,12 @@ const horizontalGalleryHandler = (() => {
         let animationFrameId;
         let currentScroll = 0;
         let isPaused = false;
-        let userInteracting = false; // New flag to detect manual interaction
 
-        // Duplicate content for seamless loop
         const galleryContent = galleryElement.innerHTML;
         galleryElement.innerHTML += galleryContent;
 
         const animateScroll = () => {
-            if (!isPaused && !userInteracting) { //
+            if (!isPaused) {
                 currentScroll += scrollSpeed;
                 if (currentScroll >= galleryElement.scrollWidth / 2) {
                     currentScroll = 0;
@@ -435,23 +433,6 @@ const horizontalGalleryHandler = (() => {
                 isPaused = false;
             });
         }
-
-        galleryElement.addEventListener('touchstart', () => {
-            userInteracting = true; // User started touching
-            isPaused = true;
-        });
-
-        galleryElement.addEventListener('touchend', () => {
-            setTimeout(() => {
-                userInteracting = false;
-                isPaused = false;
-            }, 300);
-        });
-
-        galleryElement.addEventListener('scroll', () => {
-            currentScroll = galleryElement.scrollLeft;
-        });
-
 
         startScrolling();
     }
