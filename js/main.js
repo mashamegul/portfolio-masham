@@ -223,22 +223,27 @@ const imageModalHandler = (() => {
     const init = () => {
         if (imageModal && modalImg && captionText && imageModalCloseBtn) {
             // Use event delegation for images to handle dynamically added content
-            document.addEventListener('click', handleImageClick);
+            document.addEventListener('click', handleImageClick); // Keep this for general images outside project modal
             imageModalCloseBtn.addEventListener('click', closeModal);
             imageModal.addEventListener('click', handleOutsideClick);
             document.addEventListener('keydown', handleEscapeKey);
         }
     };
 
+    const openImageDirectly = (imgElement) => {
+        imageModal.style.display = "flex";
+        imageModal.classList.add('active');
+        modalImg.src = imgElement.getAttribute('data-full-src') || imgElement.src; // Use data-full-src first, then src
+        captionText.innerHTML = imgElement.getAttribute('data-caption') || imgElement.alt;
+        modalImg.style.animation = 'modalZoomIn 0.6s forwards';
+        body.classList.add('modal-open');
+    };
+
     const handleImageClick = (e) => {
-        const img = e.target.closest('img[data-full-src]');
+        // This handler is for images outside the project modal, or for fallback
+        const img = e.target.closest('img[data-full-src], img.project-modal-image'); // Also target project-modal-image if it somehow gets here
         if (img) {
-            imageModal.style.display = "flex";
-            imageModal.classList.add('active');
-            modalImg.src = img.getAttribute('data-full-src');
-            captionText.innerHTML = img.getAttribute('data-caption') || img.alt;
-            modalImg.style.animation = 'modalZoomIn 0.6s forwards';
-            body.classList.add('modal-open');
+            openImageDirectly(img);
         }
     };
 
@@ -266,7 +271,7 @@ const imageModalHandler = (() => {
 
     return {
         init,
-        openModal: handleImageClick // Expose openModal for project detail modal, now uses the delegated handler
+        openImageDirectly // Expose the new function
     };
 })();
 
@@ -322,11 +327,14 @@ const projectDetailModalHandler = (() => {
         if (images.length > 0) {
             images.forEach(src => {
                 const img = document.createElement('img');
-                img.src = src.trim();
+                img.src = src.trim(); // Use src for actual image display
                 img.alt = projectModalTitle.textContent + " image";
                 img.classList.add('project-modal-image');
-                // Pass the image element directly to imageModalHandler.openModal
-                img.addEventListener('click', (event) => imageModalHandler.openModal({ currentTarget: img }));
+                // Store the full resolution source in a data attribute for the lightbox
+                img.setAttribute('data-full-src', src.trim()); // Ensure data-full-src is set
+                img.setAttribute('data-caption', projectModalTitle.textContent); // Set a caption for the lightbox
+                // Call the new direct function from imageModalHandler
+                img.addEventListener('click', () => imageModalHandler.openImageDirectly(img));
                 projectModalImages.appendChild(img);
             });
             projectModalImages.style.display = 'grid';
